@@ -10,9 +10,9 @@ import { CepListModel } from './cep-list-model';
 })
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
-  public onSaveData: any
-  public isData = false
- cepForm: FormGroup = this.fb.group({
+  public onSaveData: any;
+  public isData = false;
+  cepForm: FormGroup = this.fb.group({
     cep: [''],
     ddd: [''],
     gia: [''],
@@ -21,49 +21,48 @@ export class AppComponent implements OnInit {
     localidade: [''],
     complemento: [''],
     uf: [''],
-    ibge: [{value: '', disabled: true}],
-    siafi: [{value: '', disabled: true}],
+    ibge: { value: '', disabled: true },
+    siafi: { value: '', disabled: true },
   });
 
   constructor(private fb: FormBuilder, private appService: AppService) {}
 
   ngOnInit(): void {
-    console.log()
-    this.getDataSubmit()
+    this.onSaveData = JSON.parse(localStorage.getItem('SaveData')!);
+
+    if (this.onSaveData !== null) {
+      this.isData = true;
+    }
+    this.getViaCep();
   }
 
   public getViaCep() {
-    this.appService.getViaCep().subscribe((e) => {
-      const res = e;
-      this.cepForm.patchValue({
-        cep: res.cep,
-        ddd: res.ddd,
-        gia: res.gia,
-        logradouro: res.logradouro,
-        bairro: res.bairro,
-        localidade: res.localidade,
-        complemento: res.complemento,
-        uf: res.uf,
-        ibge: res.ibge,
-        siafi: res.siafi,
+    if (this.isData) {
+      this.formCep(this.onSaveData);
+    } else {
+      this.appService.getViaCep().subscribe((res) => {
+        this.formCep(res);
       });
+    }
+  }
+
+  public formCep(res: any) {
+    this.cepForm.patchValue({
+      cep: res.cep,
+      ddd: res.ddd,
+      gia: res.gia,
+      logradouro: res.logradouro,
+      bairro: res.bairro,
+      localidade: res.localidade,
+      complemento: res.complemento,
+      uf: res.uf,
+      ibge: res.ibge,
+      siafi: res.siafi,
     });
   }
 
   public onSubmit() {
-    let submitData = {
-      isData: this.isData = true,
-      data: this.cepForm.value
-    }
+    let submitData = this.cepForm.value;
     localStorage.setItem('SaveData', JSON.stringify(submitData));
   }
-
-  public getDataSubmit(){
-    this.onSaveData = JSON.parse((localStorage.getItem('SaveData')!));
-    console.log(this.onSaveData)
-    if (this.isData == false) {
-      this.getViaCep()
-    }
-  }
-
 }
