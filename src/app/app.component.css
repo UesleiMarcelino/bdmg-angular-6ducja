@@ -1,0 +1,27 @@
+p {
+  font-family: Lato;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input-full-width {
+  width: 100%;
+  margin-left: 10px;
+}
+.input-mid-width {
+  width: 75%;
+}
+
+.form-fields {
+  display: flex;
+  align-items: flex-start;
+}
+
+mat-form-field {
+  margin: 0 10px;
+}
