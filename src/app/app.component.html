@@ -6,10 +6,10 @@
 <br />
 
 <mat-card>
-  <form>
+  <form [formGroup]="cepForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="input-mid-width" appearance="outline">
       <mat-label>CEP</mat-label>
-      <input matInput placeholder="Placeholder" />
+      <input matInput type="text" formControlName="cep" placeholder="Placeholder" />
     </mat-form-field>
 
     <div class="form-fields">
@@ -58,8 +58,8 @@
         <input matInput disabled placeholder="Placeholder" />
       </mat-form-field>
     </div>
+    <div class="button">
+      <button mat-raised-button color="primary">Enviar</button>
+    </div>
   </form>
-  <div>
-    <button mat-raised-button color="primary">Primary</button>
-  </div>
 </mat-card>

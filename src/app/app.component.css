@@ -25,3 +25,15 @@ form {
 mat-form-field {
   margin: 0 10px;
 }
+
+.button {
+  font-size: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  font-size: 20px;
+
+}
