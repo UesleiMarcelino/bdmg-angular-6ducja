@@ -87,7 +87,6 @@ export class AppComponent implements OnInit {
       ibge: res.ibge,
       siafi: res.siafi,
     });
-    console.log(this.cepForm);
   }
 
   public onSubmit() {
