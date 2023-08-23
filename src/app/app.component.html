@@ -13,8 +13,13 @@
         matInput
         type="text"
         formControlName="cep"
+        (change)="getbuscarCep($event)"
+        mask="00000-000"
         placeholder="Placeholder"
       />
+      <mat-error *ngIf="cepForm && cepForm.get('cep').hasError('required')">
+        * Preencha o <strong>CEP</strong>
+      </mat-error>
     </mat-form-field>
 
     <div class="form-fields">
@@ -26,6 +31,9 @@
           formControlName="ddd"
           placeholder="Placeholder"
         />
+        <mat-error *ngIf="cepForm && cepForm.get('ddd').hasError('required')">
+          * Preencha o <strong>DDD</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>GIA</mat-label>
@@ -46,6 +54,11 @@
         formControlName="logradouro"
         placeholder="Placeholder"
       />
+      <mat-error
+        *ngIf="cepForm && cepForm.get('logradouro').hasError('required')"
+      >
+        * Preencha o <strong>Endereço</strong>
+      </mat-error>
     </mat-form-field>
 
     <div class="form-fields">
@@ -57,15 +70,27 @@
           formControlName="bairro"
           placeholder="Placeholder"
         />
+        <mat-error
+          *ngIf="cepForm && cepForm.get('bairro').hasError('required')"
+        >
+          * Preencha o <strong>Bairro</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>Numero</mat-label>
+        <mat-label>Complemento</mat-label>
         <input
           matInput
+          mask="separator.0"
+          thousandSeparator="."
           type="text"
           formControlName="complemento"
           placeholder="Placeholder"
         />
+        <mat-error
+          *ngIf="cepForm && cepForm.get('complemento').hasError('required')"
+        >
+          * Preencha o <strong>Complemento</strong>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="form-fields">
@@ -77,6 +102,11 @@
           formControlName="localidade"
           placeholder="Placeholder"
         />
+        <mat-error
+          *ngIf="cepForm && cepForm.get('localidade').hasError('required')"
+        >
+          * Preencha o <strong>Cidade</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>UF</mat-label>
@@ -86,6 +116,9 @@
           formControlName="uf"
           placeholder="Placeholder"
         />
+        <mat-error *ngIf="cepForm && cepForm.get('uf').hasError('required')">
+          * Preencha o <strong>UF</strong>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="form-fields">
@@ -94,7 +127,6 @@
         <input
           matInput
           type="text"
-         
           formControlName="ibge"
           placeholder="Placeholder"
         />
@@ -102,17 +134,33 @@
       <mat-form-field appearance="outline">
         <mat-label>SIAFI</mat-label>
         <input
-        matInput
-        type="text"
-        
-        formControlName="siafi"
-        placeholder="Placeholder"
-        [disabled]="true"
+          matInput
+          type="text"
+          formControlName="siafi"
+          placeholder="Placeholder"
+          [disabled]="true"
         />
       </mat-form-field>
     </div>
     <div class="button">
-      <button mat-raised-button color="primary">Enviar</button>
+      <button
+        matTooltip="Enviar"
+        mat-raised-button
+        color="primary"
+        alt="Enviar"
+      >
+        Enviar
+      </button>
     </div>
   </form>
+  <div>
+    <button
+      matTooltip="Buscar novo CEP"
+      mat-stroked-button
+      alt="Buscar novo CEP"
+      (click)="resetForm()"
+    >
+      <span>Buscar novo Cep</span>
+    </button>
+  </div>
 </mat-card>

@@ -4,22 +4,17 @@ p {
 
 form {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
 }
 
-.input-full-width {
-  width: 100%;
-  margin-left: 10px;
-}
 .input-mid-width {
-  width: 75%;
+  width: 41%;
 }
 
 .form-fields {
-  display: flex;
-  align-items: flex-start;
+  display: inline-block;
 }
 
 mat-form-field {
@@ -28,12 +23,18 @@ mat-form-field {
 
 .button {
   font-size: 20px;
-  align-items: center;
   display: flex;
   justify-content: center;
+}
+.button-left {
+  font-size: 20px;
+  align-items: flex-start !important;
+  display: flex;
+  justify-content: left !important;
 }
 
 button {
   font-size: 20px;
-
 }
+
+
