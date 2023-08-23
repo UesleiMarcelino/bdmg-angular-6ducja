@@ -10,33 +10,60 @@ import { CepListModel } from './cep-list-model';
 })
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
-  public res: any
-  public cepForm: FormGroup = this.fb.group({
+  public onSaveData: any
+  public isData = false
+ cepForm: FormGroup = this.fb.group({
     cep: [''],
-  });
-
- userForm = new FormGroup<CepListModel>({
-    cep: new FormControl(''),
-
+    ddd: [''],
+    gia: [''],
+    logradouro: [''],
+    bairro: [''],
+    localidade: [''],
+    complemento: [''],
+    uf: [''],
+    ibge: [{value: '', disabled: true}],
+    siafi: [{value: '', disabled: true}],
   });
 
   constructor(private fb: FormBuilder, private appService: AppService) {}
 
   ngOnInit(): void {
-    this.getViaCep();
+    console.log()
+    this.getDataSubmit()
   }
 
   public getViaCep() {
     this.appService.getViaCep().subscribe((e) => {
-      this.res = e
+      const res = e;
       this.cepForm.patchValue({
-        cep: this.res.cep
-      })
-      console.log(this.cepForm.value)
+        cep: res.cep,
+        ddd: res.ddd,
+        gia: res.gia,
+        logradouro: res.logradouro,
+        bairro: res.bairro,
+        localidade: res.localidade,
+        complemento: res.complemento,
+        uf: res.uf,
+        ibge: res.ibge,
+        siafi: res.siafi,
+      });
     });
   }
 
   public onSubmit() {
-    console.log(this.cepForm.value);
+    let submitData = {
+      isData: this.isData = true,
+      data: this.cepForm.value
+    }
+    localStorage.setItem('SaveData', JSON.stringify(submitData));
   }
+
+  public getDataSubmit(){
+    this.onSaveData = JSON.parse((localStorage.getItem('SaveData')!));
+    console.log(this.onSaveData)
+    if (this.isData == false) {
+      this.getViaCep()
+    }
+  }
+
 }

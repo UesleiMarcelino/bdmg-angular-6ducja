@@ -9,53 +9,106 @@
   <form [formGroup]="cepForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="input-mid-width" appearance="outline">
       <mat-label>CEP</mat-label>
-      <input matInput type="text" formControlName="cep" placeholder="Placeholder" />
+      <input
+        matInput
+        type="text"
+        formControlName="cep"
+        placeholder="Placeholder"
+      />
     </mat-form-field>
 
     <div class="form-fields">
       <mat-form-field appearance="outline">
         <mat-label>DDD</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input
+          matInput
+          type="number"
+          formControlName="ddd"
+          placeholder="Placeholder"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>GIA</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input
+          matInput
+          type="text"
+          formControlName="gia"
+          placeholder="Placeholder"
+        />
       </mat-form-field>
     </div>
 
     <mat-form-field class="input-mid-width" appearance="outline">
       <mat-label>Endereço</mat-label>
-      <input matInput placeholder="Placeholder" />
+      <input
+        matInput
+        type="text"
+        formControlName="logradouro"
+        placeholder="Placeholder"
+      />
     </mat-form-field>
 
     <div class="form-fields">
       <mat-form-field appearance="outline">
         <mat-label>Bairro</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input
+          matInput
+          type="text"
+          formControlName="bairro"
+          placeholder="Placeholder"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Numero</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input
+          matInput
+          type="text"
+          formControlName="complemento"
+          placeholder="Placeholder"
+        />
       </mat-form-field>
     </div>
     <div class="form-fields">
       <mat-form-field appearance="outline">
         <mat-label>Cidade</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input
+          matInput
+          type="text"
+          formControlName="localidade"
+          placeholder="Placeholder"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>UF</mat-label>
-        <input matInput placeholder="Placeholder" />
+        <input
+          matInput
+          type="text"
+          formControlName="uf"
+          placeholder="Placeholder"
+        />
       </mat-form-field>
     </div>
     <div class="form-fields">
       <mat-form-field appearance="outline">
         <mat-label>IBGE</mat-label>
-        <input matInput disabled placeholder="Placeholder" />
+        <input
+          matInput
+          type="text"
+         
+          formControlName="ibge"
+          placeholder="Placeholder"
+        />
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>SIAF</mat-label>
-        <input matInput disabled placeholder="Placeholder" />
+        <mat-label>SIAFI</mat-label>
+        <input
+        matInput
+        type="text"
+        
+        formControlName="siafi"
+        placeholder="Placeholder"
+        [disabled]="true"
+        />
       </mat-form-field>
     </div>
     <div class="button">
